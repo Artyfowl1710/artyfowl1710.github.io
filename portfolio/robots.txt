@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://artyfowl1710.github.io/sitemap.xml
