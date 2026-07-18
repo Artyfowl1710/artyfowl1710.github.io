@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mihir Khatri — AI Research &amp; Systems Engineering</title>
-<meta name="description" content="Mihir Khatri — Computer Science student and researcher working across computer vision, LLM systems, and applied ML. Building Zenso and Sentinel." />
+<meta name="description" content="Mihir Khatri — Computer Science researcher. Published (Ro-SVD, Zenodo 2026). Working on LLM inference efficiency, computer vision, and agentic systems. Building Zenso and Sentinel." />
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <meta property="og:title" content="Mihir Khatri — AI Research & Systems Engineering" />
@@ -27,7 +27,9 @@
       <a href="#about">about</a>
       <a href="#research">research</a>
       <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
       <a href="https://arty1710.substack.com" target="_blank" rel="noopener">blog</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">resume</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -42,7 +44,7 @@
     <div class="hero-cta">
       <a class="btn btn-solid" href="#projects">view projects</a>
       <a class="btn" href="#research">research</a>
-      <a class="btn" href="resume.pdf">resume</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">resume</a>
       <a class="btn" href="https://github.com/Artyfowl1710" target="_blank" rel="noopener">github</a>
     </div>
   </div>
@@ -56,19 +58,20 @@
     </div>
     <div class="about-grid">
       <p>
-        I'm a Computer Science student at Sardar Patel Institute of Technology, Mumbai, working across
-        computer vision, LLM systems, and applied research. Most of what interests me lives one layer
-        below the API — sparse sampling strategies, attention geometry, agent orchestration, and the
-        exact place a system quietly breaks under load.
+        I'm a Computer Science student at Sardar Patel Institute of Technology, Mumbai, working on
+        LLM inference efficiency, computer vision, and agentic systems. Most of what interests me lives
+        one layer below the API — sparse sampling strategies, attention geometry, agent orchestration,
+        and the exact place a system quietly breaks under load.
         <br/><br/>
-        Right now I split my time between two things: <strong>Zenso</strong>, a video engagement
-        analytics platform built on sparse-frame video understanding, and <strong>Sentinel</strong>,
-        a multi-agent harness for red-teaming LLMs across text, image, and video delivery.
+        Published independent researcher (<strong>Ro-SVD</strong>, Zenodo 2026) and former AI/ML intern
+        at Daten &amp; Wissen. Currently building <strong>Zenso</strong>, a video engagement analytics
+        platform, and <strong>Sentinel</strong>, a multi-agent harness for red-teaming LLMs across text,
+        image, and video delivery.
       </p>
       <div class="stat-list">
         <div class="stat"><b>9.35 / 10</b><span>GPA, B.Tech Computer Science</span></div>
-        <div class="stat"><b>2028</b><span>Expected graduation</span></div>
-        <div class="stat"><b>5</b><span>attack categories probed by Sentinel</span></div>
+        <div class="stat"><b>35.1%</b><span>KV-cache memory reduction, Ro-SVD</span></div>
+        <div class="stat"><b>73.91%</b><span>ROUGE-L win rate vs. uncompressed baseline</span></div>
       </div>
     </div>
   </div>
@@ -83,34 +86,34 @@
     </div>
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-marker">01 · frame sampling</div>
+        <div class="tl-marker">01 · published</div>
         <div class="tl-body">
-          <h3>TRIBE v2 — Sparse Frame Engagement Prediction</h3>
-          <p>Temporal frame ablation on Meta FAIR's TRIBE architecture. 16-frame sampling holds &gt;0.99 Pearson r against full-density baselines at a 7.5x inference speedup.</p>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Kaggle</span><span class="tag">Video Understanding</span></div>
+          <h3>Ro-SVD — Position-Aware KV Cache Compression <span style="color:var(--text-faint);font-family:var(--mono);font-size:12px;">(Zenodo, May 2026)</span></h3>
+          <p>Position-aware truncated SVD on pre-RoPE key tensors for Grouped-Query Attention. Evaluated on 1,602 LongBench samples with Qwen2.5-7B-Instruct: 73.91% ROUGE-L win rate vs. uncompressed baseline, 35.1% KV-cache memory reduction. Custom CUDA de-rotation kernel with cuBLAS batched low-rank projection.</p>
+          <div class="tags"><span class="tag">CUDA</span><span class="tag">cuBLAS</span><span class="tag">Long Context</span></div>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-marker active">02 · in progress</div>
+        <div class="tl-marker">02 · inference efficiency</div>
+        <div class="tl-body">
+          <h3>LLM Inference Optimisation — KV Cache via Low-Rank Approximation</h3>
+          <p>End-to-end pipeline for inverse RoPE de-rotation, truncated SVD, and progressive online re-compression. 7-configuration sweep over 1,602 LongBench samples tracking ROUGE-L, perplexity, latency, and GPU memory. Explored Triton-based batched randomised SVD to cut the 29.5% Python-loop overhead.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Triton</span><span class="tag">CUDA</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-marker active">03 · in progress</div>
         <div class="tl-body">
           <h3>Zenso — Neural Engagement Analytics</h3>
-          <p>E(t) engagement scoring with hemodynamic lag correction, validated against scene boundaries. Six-module multi-agent architecture on LangGraph.</p>
+          <p>E(t) engagement scoring with hemodynamic lag correction. Six-module multi-agent architecture on LangGraph. In active development on private infrastructure (Kaggle/local), pending IP protection.</p>
           <div class="tags"><span class="tag">LangGraph</span><span class="tag">FastAPI</span><span class="tag">Computer Vision</span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-marker">03 · inference efficiency</div>
-        <div class="tl-body">
-          <h3>Ro-SVD — Position-Aware KV Cache Compression</h3>
-          <p>Compression scheme for grouped-query attention KV caches that preserves positional structure under low-rank projection.</p>
-          <div class="tags"><span class="tag">Attention</span><span class="tag">Long Context</span></div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-marker active">04 · in progress</div>
         <div class="tl-body">
           <h3>Sentinel — Cross-Modal LLM Red-Teaming</h3>
-          <p>Multi-agent harness probing LLMs across five attack categories, extended to measure how jailbreak success shifts across text, image, and video delivery — the "modality gap."</p>
+          <p>Multi-agent harness (LangGraph + OpenRouter/NVIDIA NIM) probing LLMs across five attack categories, extended to measure how jailbreak success shifts across text, image, and video delivery — the "modality gap." In active development on private infrastructure, pending IP protection.</p>
           <div class="tags"><span class="tag">LangGraph</span><span class="tag">AI Safety</span><span class="tag">NVIDIA NIM</span></div>
         </div>
       </div>
@@ -126,40 +129,78 @@
     </div>
     <div class="grid-projects">
       <div class="card">
+        <h3><a href="https://skill-flow-ai.netlify.app/" target="_blank" rel="noopener" style="color:inherit;">SkillFlow AI ↗</a></h3>
+        <p>Agentic peer skill-bartering platform built for the JPMC Agastya Foundation. Autonomous matching between learners and mentors, no manual moderation.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Agentic</span></div>
+        <div class="status">deployed — <a href="https://github.com/Artyfowl1710/skill-flow" target="_blank" rel="noopener" style="color:var(--text-dim);">code ↗</a></div>
+      </div>
+      <div class="card">
         <h3>Zenso</h3>
-        <p>Neural engagement analytics platform built on sparse-frame video understanding.</p>
+        <p>Neural engagement analytics platform built on sparse-frame video understanding and a six-module LangGraph agent architecture.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">LangGraph</span></div>
-        <div class="status">active — building</div>
+        <div class="status">active — private, pending IP protection</div>
       </div>
       <div class="card">
         <h3>Sentinel</h3>
-        <p>Multi-agent red-teaming harness for LLM safety, with cross-modal jailbreak measurement.</p>
+        <p>Multi-agent red-teaming harness for LLM safety, with cross-modal jailbreak measurement across five attack categories.</p>
         <div class="tags"><span class="tag">LangGraph</span><span class="tag">OpenRouter</span></div>
-        <div class="status">active — hackathon build</div>
+        <div class="status">active — private, pending IP protection</div>
       </div>
       <div class="card">
         <h3>CivicFlow</h3>
-        <p>Automated form discovery and filling agent using Playwright and Claude Vision, with an RL feedback loop.</p>
+        <p>Automated form discovery and filling agent using Playwright and Claude Vision, with an RL feedback loop for adaptive form handling.</p>
         <div class="tags"><span class="tag">Playwright</span><span class="tag">Claude Vision</span></div>
         <div class="status">complete</div>
       </div>
       <div class="card">
-        <h3>AI Chess</h3>
-        <p>Combines Stockfish's search with a multimodal LLM layer for natural-language explanation of engine decisions.</p>
-        <div class="tags"><span class="tag">Stockfish</span><span class="tag">Multimodal</span></div>
-        <div class="status">active</div>
-      </div>
-      <div class="card">
-        <h3>The Scar Map</h3>
-        <p>Disaster damage assessment for Indian farmers using satellite imagery and Grad-CAM explainability.</p>
-        <div class="tags"><span class="tag">ResNet-18</span><span class="tag">Grad-CAM</span></div>
+        <h3><a href="https://github.com/kaival775/faraway-hack" target="_blank" rel="noopener" style="color:inherit;">Automated Form-Filling Agent ↗</a></h3>
+        <p>LLM agent that parses a target form's structure and generates Selenium automation to autofill it from a stored profile. Built for FAR AWAY 2026.</p>
+        <div class="tags"><span class="tag">LangGraph</span><span class="tag">Selenium</span></div>
         <div class="status">complete</div>
       </div>
       <div class="card">
-        <h3>SkillFlow AI</h3>
-        <p>Peer skill-bartering platform, deployed with the JPMC Agastya Foundation.</p>
-        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Full-Stack</span></div>
-        <div class="status">deployed</div>
+        <h3><a href="https://github.com/Artyfowl1710/mineguard" target="_blank" rel="noopener" style="color:inherit;">Mineguard ↗</a></h3>
+        <p>YOLO-based rockfall detection for safety-critical monitoring on limited annotated datasets.</p>
+        <div class="tags"><span class="tag">YOLO</span><span class="tag">Computer Vision</span></div>
+        <div class="status">complete</div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/Artyfowl1710/willovate-talent-hunt" target="_blank" rel="noopener" style="color:inherit;">Willovate Talent Hunt ↗</a></h3>
+        <p>Production-grade ML service shipped under hackathon time constraints.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Docker</span></div>
+        <div class="status">complete</div>
+      </div>
+      <div class="card">
+        <h3>Transformer From Scratch</h3>
+        <p>Multi-head self-attention, causal masking, positional encoding, and autoregressive decoding implemented from first principles.</p>
+        <div class="tags"><span class="tag">PyTorch</span></div>
+        <div class="status">complete</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Experience &amp; Certifications</div>
+      <h2 class="section-title">Track record</h2>
+    </div>
+    <div class="about-grid" style="grid-template-columns: 1fr 1fr;">
+      <div>
+        <h3 style="font-family:var(--display);font-size:18px;margin:0 0 10px;">AI/ML Intern — Daten &amp; Wissen Pvt. Ltd. <span style="color:var(--text-faint);font-family:var(--mono);font-size:12px;">2025</span></h3>
+        <p style="color:var(--text-dim);font-size:15px;">Fine-tuned PaddleOCR models for license plate detection and recognition (~88% end-to-end accuracy). Evaluated U-Net/SAM/ResNet segmentation backbones for production latency–accuracy trade-offs. Ran Optuna hyperparameter sweeps.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--display);font-size:18px;margin:0 0 10px;">Certifications</h3>
+        <ul style="color:var(--text-dim);font-size:15px;padding-left:18px;margin:0;">
+          <li>Hugging Face — Agents Course, Unit 1 Fundamentals Certificate</li>
+          <li>Hugging Face — NLP Course Certificate</li>
+          <li>Google Cloud Skills Boost — Agent Fundamentals</li>
+          <li>Google Cloud Skills Boost — Use Machine Learning APIs on Google Cloud (skill badge)</li>
+          <li>NVIDIA Deep Learning Institute — Agentic AI Explained</li>
+          <li>Docker Essentials: Container Networking</li>
+        </ul>
       </div>
     </div>
   </div>
