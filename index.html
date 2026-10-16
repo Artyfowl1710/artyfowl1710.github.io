@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mihir Khatri: AI research and systems</title>
+<meta name="description" content="Mihir Khatri, computer science researcher. First-author preprint on KV-cache compression. Research intern at IIIT Kancheepuram and IIT Jodhpur. Builds LLM agents, inference systems, and evaluations.">
+<meta property="og:title" content="Mihir Khatri: AI research and systems">
+<meta property="og:description" content="Language models that run lean, hold up under test, and stay in bounds.">
+<meta property="og:image" content="assets/banner.svg">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Primary"><a class="brand" href="#top">Mihir Khatri</a>
+<div class="links"><a href="#threads">Research</a><a href="projects.html">Projects</a><a href="notes.html">Notes</a><a href="#record">Record</a><a href="https://arty1710.substack.com">Writing</a><a class="pill" href="resume.pdf">Resume</a></div></nav>
+
+<header class="hero" id="top">
+<div>
+<p class="kick">AI research and systems, Mumbai</p>
+<h1 class="mix" data-mix>Lean. Tested. Safe.</h1>
+<p class="lede">Language models that run in less memory, hold up under rigorous evaluation, and stay inside their limits.</p>
+<p class="sub">Third-year B.Tech in Computer Science at SPIT Mumbai, GPA 9.4. First-author preprint on KV-cache compression. Research intern at IIIT Kancheepuram and IIT Jodhpur. Open to collaborations and internships.</p>
+<div class="cta"><a class="btn main" href="mailto:khatrimihir672@gmail.com">Start a conversation</a><a class="btn" href="resume.pdf">Download resume</a><a class="btn" href="https://github.com/Artyfowl1710">GitHub</a></div>
+</div>
+<figure>
+<canvas id="m" width="28" height="28" role="img" aria-label="A synthetic matrix rebuilt from its strongest components; the slider sets how many components are kept"></canvas>
+<div class="ctl"><label for="r">Components kept</label><input id="r" type="range" min="1" max="28" value="3"><output id="o" for="r">3 of 28</output></div>
+<figcaption>A synthetic matrix rebuilt from its strongest components. A few directions carry most of the signal, the idea behind my Ro-SVD work. Reconstruction error: <b id="e"></b></figcaption>
+</figure>
+</header>
+
+<section class="band" aria-label="Thesis"><div class="thesis">
+<div><h3>Memory is the bottleneck.</h3><p>Long-context inference runs out of GPU memory first. My preprint cuts the KV cache by <b>35.1%</b> and keeps quality.</p></div>
+<div><h3>Evaluation is the product.</h3><p>A result needs a test it can fail. I run full benchmarks, <b>16 LongBench subsets</b>, and significance tests, not hand-picked examples.</p></div>
+<div><h3>Agents need walls.</h3><p>Agent-written code runs in a <b>sandbox</b> with no network and hard limits, behind a server that manages its own GPU memory.</p></div>
+<div><h3>Claims need proof.</h3><p>Safe control of a power grid, jailbreaks across text and video: each gets a measured answer, not a demo.</p></div>
+</div></section>
+
+<section class="band" id="threads"><h2 class="mix" data-mix>Research threads</h2>
+<div class="thread"><div class="num">01</div><div><span class="tag">First-author preprint, Zenodo, May 2026</span><h3>Ro-SVD: position-aware KV-cache compression</h3></div><p>Online low-rank compression of pre-RoPE keys in grouped-query attention, with per-head adaptive rank allocation, a custom CUDA de-rotation kernel, and a randomised SVD path. Over 1,602 samples on all 16 LongBench subsets (Qwen2.5-7B-Instruct, 4-bit NF4, dual T4): <b>73.91% ROUGE-L win rate</b> against the uncompressed baseline.</p><details><summary>What I learned</summary><p>Python-loop SVD added 29.5% latency, so the algorithm was not the whole story: the implementation had to be batched and randomised. Head-level analysis mattered too, since a few high-entropy heads need more rank than the rest.</p></details></div>
+<div class="thread"><div class="num">02</div><div><span class="tag">IIIT Kancheepuram, Prof. Rajesh Kolluri, 2026 to now</span><h3>Safe reinforcement learning for vehicle-to-grid control</h3></div><p>A differentiable residual-Dyna world model: an analytical AC power-flow base plus a learned residual, a quadratic-programming safety projection, and personalised federated learning. Early results are promising.</p><details><summary>What I learned</summary><p>Safety constraints belong in the architecture, not the reward. The projection layer guarantees feasible actions, so the learned residual only has to correct the physics model.</p></details></div>
+<div class="thread"><div class="num">03</div><div><span class="tag">IIT Jodhpur, Prof. Deeksha Varshney, 2026 to now</span><h3>Multilingual small-model distillation</h3></div><p>Analysis of distilled small language models on multilingual tasks, extending Microsoft's Phi family to new evaluation settings. Equal contributor on hypotheses, experiments, and evaluation.</p></div>
+<div class="thread"><div class="num">04</div><div><span class="tag">Multi-agent harness, 2026</span><h3>Sentinel: cross-modal red-teaming</h3></div><p>Probes LLMs across five attack categories and measures how jailbreak success shifts between text, image, and video delivery, compared with McNemar and Wilcoxon tests. Code is private for now.</p><details><summary>What I learned</summary><p>Raw pass rates mislead. Paired tests changed which differences I trusted, and the modality gap only became visible once delivery format was held as the single changing variable.</p></details></div>
+</section>
+
+<section class="band" aria-label="Numbers"><div class="stats">
+<div class="stat"><strong>1,602</strong><span>benchmark samples per evaluation run</span></div>
+<div class="stat"><strong>7.5x</strong><span>inference speedup with over 0.99 Pearson r (ZENSO)</span></div>
+<div class="stat"><strong>47/176</strong><span>Kaggle IMAGINE, MEG imagined-word decoding</span></div>
+<div class="stat"><strong>99.999</strong><span>validation accuracy, Amazon ML Challenge 2026</span></div>
+</div></section>
+
+<section class="band" id="projects"><h2 class="mix" data-mix>Things I have built</h2>
+<div class="grid">
+<a class="tile" href="https://github.com/Artyfowl1710/Summertime-server"><h3>INDRA and Summertime</h3><p>An air-gapped AI workbench for SIH 2026. An OpenAI-compatible GPU gateway with LRU memory management and a Docker and gVisor code sandbox, plus a client with a tool-calling agent orchestrator.</p><small>Server code, client at Indra_lok on GitHub</small></a>
+<a class="tile" href="https://skill-flow-ai.netlify.app/"><h3>SkillFlow AI</h3><p>Agentic skill-bartering platform built for the JPMC Agastya Foundation. Matches learners and mentors with no manual moderation.</p><small>Live site</small></a>
+<a class="tile" href="https://github.com/kaival775/faraway-hack"><h3>Form-filling agents</h3><p>CivicFlow and the FAR AWAY agent find a form, infer its fields, and fill it in end to end with Playwright or Selenium.</p><small>FAR AWAY code on GitHub</small></a>
+<a class="tile" href="https://github.com/Artyfowl1710"><h3>Setu, Mineguard, auto_doc</h3><p>Offline Bluetooth-mesh disaster messaging, YOLO rockfall detection, and a PaddleOCR pipeline that recovers text from degraded scans.</p><small>All repositories on GitHub</small></a>
+</div><p style="margin-top:1.6rem"><a class="btn main" href="projects.html">Read the case studies</a> <a class="btn" href="notes.html">Engineering notes</a></p></section>
+
+<section class="band" id="record"><div class="split"><h2 class="mix" data-mix>Track record</h2>
+<ul class="list">
+<li><strong>Daten &amp; Wissen, AI/ML intern, 2025</strong><span>Fine-tuned PaddleOCR for license plates to about 88% end-to-end accuracy and compared U-Net, SAM, and ResNet backbones on latency against accuracy.</span></li>
+<li><strong>Smart India Hackathon 2026</strong><span>Qualified SPIT's internal rounds. National result pending.</span></li>
+<li><strong>Open source</strong><span>Two open pull requests to <a href="https://github.com/ML4SCI/DeepLense-AI-Scientist/pulls">ML4SCI DeepLense-AI-Scientist</a>.</span></li>
+<li><strong>Chess</strong><span>FIDE-rated 1700, SPIT institute champion.</span></li>
+<li><strong>Certificates</strong><span>Hugging Face Agents and NLP, NVIDIA DLI Agentic AI, Google Cloud ML APIs and Agent Fundamentals.</span></li>
+<li><strong>Writing</strong><span><a href="https://arty1710.substack.com">Gradient: Weight &amp; Meaning</a>, an explainer series on how language models work.</span></li>
+</ul></div></section>
+
+<section class="band cut"><h2 class="mix" data-mix>Build something with me</h2>
+<div class="cta"><a class="btn main" href="mailto:khatrimihir672@gmail.com">khatrimihir672@gmail.com</a><a class="btn" href="https://www.linkedin.com/in/mihir-khatri-bbb57a37a/">LinkedIn</a><a class="btn" href="https://orcid.org/0009-0004-9166-6891">ORCID</a></div></section>
+
+<footer><span>Mihir Khatri, Mumbai, India</span>
+<div class="links"><a href="https://github.com/Artyfowl1710">GitHub</a><a href="https://www.kaggle.com/mihirkhatri1710">Kaggle</a><a href="https://leetcode.com/u/fowl1710/">LeetCode</a><a href="https://arty1710.substack.com">Substack</a><a href="resume.pdf">Resume</a></div></footer>
+</div>
+<script src="site.js"></script>
+<script>
+(function(){
+var N=28,c=document.getElementById('m'),x=c.getContext('2d'),s=document.getElementById('r'),o=document.getElementById('o');
+var comps=[],mx=0,i,a,b,u,v,full;
+for(i=0;i<N;i++){
+  var f1=i*0.5+0.5,f2=((i*7+3)%13)*0.5+0.5,ph=i*1.3,w=1/Math.pow(i+1,1.05);
+  u=[];v=[];
+  for(a=0;a<N;a++){u.push(Math.cos(Math.PI*f1*(a+.5)/N+ph));v.push(Math.cos(Math.PI*f2*(a+.5)/N-ph*.5));}
+  comps.push({u:u,v:v,w:w});
+}
+function build(r){var m=new Float32Array(N*N),k,C;for(k=0;k<r;k++){C=comps[k];for(a=0;a<N;a++)for(b=0;b<N;b++)m[a*N+b]+=C.w*C.u[a]*C.v[b];}return m;}
+full=build(N);for(i=0;i<full.length;i++)mx=Math.max(mx,Math.abs(full[i]));
+var B=[18,12,43],P=[155,123,255],L=[216,255,62];
+function draw(r){
+  var m=build(r),img=x.createImageData(N,N),val,al,col,p;
+  for(a=0;a<N;a++)for(b=0;b<N;b++){
+    val=m[a*N+b]/mx;al=Math.pow(Math.min(1,Math.abs(val)),.8);col=val>=0?P:L;p=(a*N+b)*4;
+    img.data[p]=B[0]+(col[0]-B[0])*al;img.data[p+1]=B[1]+(col[1]-B[1])*al;img.data[p+2]=B[2]+(col[2]-B[2])*al;img.data[p+3]=255;
+  }
+  x.putImageData(img,0,0);o.textContent=r+' of '+N;
+}
+s.addEventListener('input',function(){draw(+s.value)});
+draw(+s.value);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  var r=1,go=true;
+  s.addEventListener('pointerdown',function(){go=false});s.addEventListener('keydown',function(){go=false});
+  (function tick(){if(!go)return;s.value=r;draw(r);if(r>=12){go=false;s.value=3;draw(3);return}r++;setTimeout(tick,170)})();
+}
+
+/* reconstruction error */
+var fn=0,E=document.getElementById('e');for(i=0;i<full.length;i++)fn+=full[i]*full[i];
+var _d=draw;draw=function(r){_d(r);var m=build(r),q=0,k;for(k=0;k<m.length;k++){var t=m[k]-full[k];q+=t*t}E.textContent=Math.round(Math.sqrt(q/fn)*100)+'%'};draw(+s.value);
+})();
+</script>
+</body>
+</html>
